@@ -1,0 +1,10 @@
+  /* Красное сердце */
+  .fa-heart {
+    color: red;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+  transition: transform 0.5s ease;
+  background-color: #a6e4ec;
+}

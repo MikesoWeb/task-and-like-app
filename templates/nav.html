@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container justify-content-between">
+        <a class="navbar-brand" href="{{ url_for('index') }}">Менеджер задач</a>
+        <ul class="navbar-nav">
+            <li class="nav-item {% if request.path == url_for('index') %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('index') }}">Главная</a>
+            </li>
+            {% if current_user.is_authenticated %}
+            <!-- Если пользователь залогинен, показывать My Account и Logout -->
+            <li class="nav-item {% if request.path == url_for('account') %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('account') }}">Аккаунт</a>
+            </li>
+            <li class="nav-item {% if request.path == url_for('tasks') %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('tasks') }}">Задачи</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('logout') }}">Выход</a>
+            </li>
+            
+            {% else %}
+            <!-- Если пользователь не залогинен, показывать Login и Register -->
+            <li class="nav-item {% if request.path == url_for('login') %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('login') }}">Вход</a>
+            </li>
+            <li class="nav-item {% if request.path == url_for('register') %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('register') }}">Регистрация</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

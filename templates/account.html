@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <!-- Левая часть с формой для добавления задач -->
+        <div class="col-md-3">
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Добавь задачу" required>
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control" id="description" name="description" placeholder="Добавь описание"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Создать</button>
+            </form>
+        </div>
+
+        <!-- Центральная часть с выводом списка задач -->
+        <div class="col-md-6">
+            {% for task in tasks %}
+            <div class="card mb-3 task-card">
+                <div class="card-header">
+                    <div class="float-start">
+                        <i class="far fa-heart me-1"></i>{{ task.count_likes() }} лайков
+                    </div>
+                    <div class="float-end text-dark">
+                        {{ task.created_at.strftime('%d-%m-%Y %H:%M:%S') }}
+                    </div>
+                </div>
+                
+                
+                <div class="card-body">
+                    <h5 class="card-title">{{ task.title }}</h5>
+                    <p class="card-text">{{ task.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Правая часть с информацией о пользователе -->
+<div class="col-md-3">
+    <div class="card">
+        <img src="{{ url_for('static', filename='img/logo.jpg') }}" class="card-img-top" alt="Фото пользователя">
+        <div class="card-body">
+            <h5 class="card-title text-center">{{ current_user.username }}</h5>
+            <ul>
+                <li>Имя: {{ first_name }}</li>
+                <li>Фамилия: {{ last_name }}</li>
+                <li>Электронная почта: {{ email }}</li>
+                <li>Адрес: {{ address }}</li>
+                <li>Телефон: {{ phone_number }}</li>
+                <!-- Добавьте другие данные о пользователе, если необходимо -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center">Список задач</h2>
+            <ul class="list-group mt-4">
+                {% for task in tasks %}
+                <li class="list-group-item my-3">
+                    <div class="task-header">
+                        <h5>{{ task.title }}</h5>
+                        <p>{{ task.description }}</p>
+                    </div>
+                    <div class="task-footer">
+                        <div class="float-start">
+                            <small class="text-muted">Создано пользователем {{ task.user.username }} {{
+                                task.created_at.strftime('%d-%m-%Y %H:%M:%S') }}</small>
+                        </div>
+                        <div class="float-end">
+                            {% if current_user.is_authenticated %}
+                            <button class="btn btn-link like-button" data-task-id="{{ task.id }}">
+                                {% if task.is_liked_by(current_user) %}
+                                <i class="fas fa-heart"></i>
+                                {% else %}
+                                <i class="far fa-heart"></i>
+                                {% endif %}
+                            </button>
+                            <small class="like-count">{{ task.count_likes() }}</small>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
