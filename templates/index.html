@@ -2,8 +2,44 @@
 
 {% block content %}
 
-<div class="content">
-    It`s main page
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto text-center">
+            <h1 class="display-6 mb-4 alert alert-info">Создавай свои, лайкай чужие!</h1>
+            <p class="lead">
+                Приложение позволяет пользователям создавать, просматривать и управлять своими задачами.
+                Оно создано с использованием <strong>Flask</strong> для серверной части, обеспечивая надёжность и гибкость,
+                и <strong>JavaScript</strong> для клиентской части, обеспечивая интерактивность и динамический пользовательский интерфейс.
+            </p>
+            <p class="lead">
+                Пользователи могут перейти к репозиторию на
+                <a href="https://github.com/MikesoWeb/task-and-like-app" target="_blank" class="link-primary text-decoration-none">
+                    <i class="bi bi-github"></i> GitHub
+                </a>,
+                а также 
+                <a href="https://my-py.ru/" target="_blank" class="link-primary text-decoration-none">
+                    <i class="bi bi-house-door"></i> посетить основной сайт
+                </a> создателя приложения.
+            </p>
+            
+
+            <h2 class="mt-5">Особенности</h2>
+            <ul class="list-group">
+                <li class="list-group-item"><i class="bi bi-person-plus"></i> <span class="ms-2">Регистрация и
+                        аутентификация пользователей.</span></li>
+                <li class="list-group-item"><i class="bi bi-card-checklist"></i> <span class="ms-2">Создание и
+                        управление задачами.</span></li>
+                <li class="list-group-item"><i class="bi bi-hand-thumbs-up"></i> <span class="ms-2">Возможность ставить
+                        лайки задачам.</span></li>
+                <li class="list-group-item"><i class="bi bi-people"></i> <span class="ms-2">Возможность просмотра задач,
+                        созданных другими пользователями.</span></li>
+                <li class="list-group-item"><i class="bi bi-window"></i> <span class="ms-2">Простой и интуитивно
+                        понятный пользовательский интерфейс.</span></li>
+            </ul>
+
+        </div>
+    </div>
 </div>
+
 
 {% endblock %}
